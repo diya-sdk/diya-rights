@@ -1,0 +1,20 @@
+{
+  "name": "diya-rights",
+  "homepage": "https://github.com/partnering/diya-rights",
+  "authors": [
+    "Sylvain Mahé <sylvain.mahe@partnering.fr>"
+  ],
+  "description": "",
+  "main": "",
+  "license": "LGPL v3",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.4.0"
+  }
+}

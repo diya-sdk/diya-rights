@@ -1,0 +1,44 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+
+<dom-module id="diya-rights">
+	<style>
+	
+	</style>
+
+	<template>
+		<template is="dom-if" if="{{hasRights}}">
+			<div><content></content></div>
+		</template>
+	</template>
+
+</dom-module>
+<script>
+Polymer({
+	is: 'diya-rights',
+	properties: {
+		selector: { notify: false, observer: 'update' },
+		rights: { type: String, notify: false, value: null, observer: 'update' },
+		hasRights: { type: Boolean, notify: true, value: false }
+	},
+
+	ready: function() {},
+	
+	update: function() {
+		var that = this;
+
+		if(!this.selector) { 
+			this.hasRights = false;
+			return ;
+		}
+
+		d1(this.selector).request({service: "rights", func: "CheckRights", data: {
+			funcs: this.rights
+		}}, function(peerId, err, data) {
+			console.log(data);
+			if(data && data.authorized) { that.hasRights = true; }
+			else { that.hasRights = false; }
+		});
+	}
+});
+</script>
